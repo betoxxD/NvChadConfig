@@ -22,3 +22,6 @@ map("n", "<leader>nt", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window
 -- Open a terminal in the top half of the window and execute the next command "g++ -std=c++11 % && ./a.out" on it
 map("n", "<leader>fw", "<cmd>split term://g++ -std=c++11 % && ./a.out<CR>", { desc = "terminal split and compile c file" })
 
+-- Open file_browser with the path of the current buffer
+map("n", "<leader>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = "file_browser with the path of the current buffer" })
+

@@ -1,4 +1,4 @@
--- EXAMPLE 
+-- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -23,10 +23,19 @@ lspconfig.tsserver.setup {
 }
 
 -- angularls
-local util = require("lspconfig.util")
-lspconfig.angularls.setup{
+local util = require "lspconfig.util"
+lspconfig.angularls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  root_dir = util.root_pattern("angular.json"),
+  root_dir = util.root_pattern "angular.json",
+}
+
+-- powershell_es
+lspconfig.powershell_es.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  shell = "powershell.exe",
+  cmd = { "pwsh", "-NoLogo", "-NoProfile", "-Command", "Invoke-Completion -PowerShellVersion 7 -CommandName $true" },
 }
